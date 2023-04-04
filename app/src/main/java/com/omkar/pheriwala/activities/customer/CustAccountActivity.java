@@ -30,6 +30,13 @@ public class CustAccountActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callRegDialog();
+            }
+        });
     }
 
     private void callLoginDialog()
