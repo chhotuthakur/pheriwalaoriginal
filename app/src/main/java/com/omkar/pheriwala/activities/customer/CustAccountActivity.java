@@ -17,16 +17,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.omkar.pheriwala.R;
+import com.omkar.pheriwala.models.Customers;
 
 public class CustAccountActivity extends AppCompatActivity {
 
-    Button btn_log, btn_reg, login_btn;
+    Button btn_log, btn_reg, login_btn, btn_cancel_login,btn_reg_cancel;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     TextView txxt_log_reg,title_txt;
-    EditText mail_log,pass_log;
+    EditText mail_log,pass_log,edtuname,edtphone,edtadd; ;
     String user;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class CustAccountActivity extends AppCompatActivity {
 
         btn_log = findViewById(R.id.btn_cust_login);
         btn_reg = findViewById(R.id.btn_cust_reg);
+
 
         btn_log.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +62,12 @@ public class CustAccountActivity extends AppCompatActivity {
     {
         Dialog myDialog = new Dialog(this);
         myDialog.setContentView(R.layout.login_page);
-        myDialog.setCancelable(false);
         Button login = (Button) myDialog.findViewById(R.id.login_btn);
 
         EditText edtmail = (EditText) myDialog.findViewById(R.id.mail_login);
         EditText edtpass = (EditText) myDialog.findViewById(R.id.pass_login);
         myDialog.show();
+        myDialog.setCancelable(true);
 
         login.setOnClickListener(new View.OnClickListener()
         {
@@ -71,6 +76,8 @@ public class CustAccountActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 login_btn = v.findViewById(R.id.login_btn);
+//                btn_cancel_login = findViewById(R.id.cancel_login_btn);
+
 //                txxt_log_reg = v.findViewById(R.id.txxt_reg_logn);
 //                mail_log = v.findViewById(R.id.mail_login);
 //                pass_log = v.findViewById(R.id.pass_login);
@@ -103,6 +110,8 @@ public class CustAccountActivity extends AppCompatActivity {
                         });
 
 
+
+
                     }
                 });
 
@@ -116,22 +125,70 @@ public class CustAccountActivity extends AppCompatActivity {
     }
     private void callRegDialog()
     {
-        Dialog myDialog = new Dialog(this);
-        myDialog.setContentView(R.layout.reg_page);
-        myDialog.setCancelable(false);
-        Button login = (Button) myDialog.findViewById(R.id.login_btn);
+        Dialog regDialog = new Dialog(this);
+        regDialog.setContentView(R.layout.reg_page);
+        regDialog.setCancelable(true);
+        Button reg = (Button) regDialog.findViewById(R.id.reg_btn);
 
-        EditText edtmail = (EditText) myDialog.findViewById(R.id.mail_login);
-        EditText edtpass = (EditText) myDialog.findViewById(R.id.pass_login);
-        myDialog.show();
+        EditText edtmail = (EditText) regDialog.findViewById(R.id.edtmail);
+        EditText edtpass = (EditText) regDialog.findViewById(R.id.edtpass);
+        EditText edtuname = (EditText) regDialog.findViewById(R.id.edtuname);
+        EditText edtphone = (EditText) regDialog.findViewById(R.id.edtphone);
+        EditText edtadd = (EditText) regDialog.findViewById(R.id.edtadd);
 
-        login.setOnClickListener(new View.OnClickListener()
+        regDialog.show();
+
+        reg.setOnClickListener(new View.OnClickListener()
         {
 
             @Override
             public void onClick(View v)
             {
-                //your login calculation goes here
+
+//                edtuname = v.findViewById(R.id.edtuname);
+//                edtpass = v.findViewById(R.id.edtpass);
+//                edtmail = v.findViewById(R.id.edtmail);
+//                edtphone = v.findViewById(R.id.edtphone);
+//                edtadd = v.findViewById(R.id.edtadd);
+                mAuth = FirebaseAuth.getInstance();
+
+
+                String username = edtuname.getText().toString();
+                String pass = edtpass.getText().toString();
+                String mail = edtmail.getText().toString();
+                String phone = edtphone.getText().toString();
+                String add = edtadd.getText().toString();
+
+                mAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(CustAccountActivity.this,"success, please login",Toast.LENGTH_LONG).show();
+                            databaseReference = FirebaseDatabase.getInstance().getReference();
+//                Products products = new Products();
+
+                            Customers customers = new Customers();
+
+
+
+                            String id = username + phone;
+
+
+                            databaseReference.child("Customer").child(id).child("username").setValue(username);
+                            databaseReference.child("Customer").child(id).child("email").setValue(mail);
+                            databaseReference.child("Customer").child(id).child("phone").setValue(phone);
+                            databaseReference.child("Customer").child(id).child("address").setValue(add);
+
+
+                            regDialog.dismiss();
+
+                        }
+                    }
+                });
+
+
+
+
             }
         });
 
