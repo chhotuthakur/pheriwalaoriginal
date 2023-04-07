@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Profile"
+        android:id="@+id/cust_side_pro"
+        android:icon="@drawable/ic_baseline_person_24"/>
+    <item
+        android:title="Products"
+        android:id="@+id/cust_side_proda"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"/>
+    <item
+        android:title="Settings"
+        android:id="@+id/cust_side_set"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+
+</menu>

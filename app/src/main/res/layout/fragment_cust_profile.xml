@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CustProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="Customer Name"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:gravity="center"
+        android:id="@+id/cust_frag_name"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer Email"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:gravity="center"
+        android:id="@+id/cust_frag_mail"
+        android:layout_below="@id/cust_frag_name"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer Phone"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:gravity="center"
+        android:id="@+id/cust_frag_phone"
+        android:layout_below="@id/cust_frag_mail"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer Address"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:padding="8dp"
+        android:gravity="center"
+        android:id="@+id/cust_frag_add"
+        android:layout_below="@id/cust_frag_phone"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cust_frag_btn_logout"
+        android:layout_below="@id/cust_frag_add"/>
 
-</FrameLayout>
+
+
+
+</RelativeLayout>
