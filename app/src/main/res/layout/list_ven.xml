@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vendor Name"
+        android:id="@+id/ven_list_name"
+        android:layout_weight="1"
+        android:textSize="22sp"
+        android:padding="8dp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ven_call_ico"
+        android:src="@drawable/ic_baseline_add_ic_call_24"
+        android:layout_weight="2"
+        android:padding="5dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -98,6 +98,9 @@ public class CustAccountActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
+
+
+//                                    if (mAuth.getCurrentUser().toString()==)
                                     Toast.makeText(CustAccountActivity.this,"Login Success",Toast.LENGTH_LONG).show();
 //                            Intent i = new Intent(getContext(), MainActivity.class);
 //                            startActivity(i);
