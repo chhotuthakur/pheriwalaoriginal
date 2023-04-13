@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.omkar.pheriwala.R;
-import com.omkar.pheriwala.fragments.CustProfileFragment;
+import com.omkar.pheriwala.fragments.cust.CustProfileFragment;
 
 public class CustHomeActivity extends AppCompatActivity {
 

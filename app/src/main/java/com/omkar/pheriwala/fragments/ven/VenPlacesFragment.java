@@ -1,4 +1,4 @@
-package com.omkar.pheriwala.fragments;
+package com.omkar.pheriwala.fragments.ven;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.omkar.pheriwala.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link VenScheduleFragment#newInstance} factory method to
+ * Use the {@link VenPlacesFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class VenScheduleFragment extends Fragment {
+public class VenPlacesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class VenScheduleFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public VenScheduleFragment() {
+    public VenPlacesFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class VenScheduleFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment VenScheduleFragment.
+     * @return A new instance of fragment VenPlacesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static VenScheduleFragment newInstance(String param1, String param2) {
-        VenScheduleFragment fragment = new VenScheduleFragment();
+    public static VenPlacesFragment newInstance(String param1, String param2) {
+        VenPlacesFragment fragment = new VenPlacesFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class VenScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ven_schedule, container, false);
+        return inflater.inflate(R.layout.fragment_ven_places, container, false);
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.common.ProeditFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+<EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/edt_pro_ven_name"
+    android:hint="Name"
+    android:textSize="22sp"
+    android:padding="8dp"
+    android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_pro_ven_qty"
+        android:hint="Quantity"
+        android:textSize="22sp"
+        android:padding="8dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_pro_ven_price"
+        android:hint="Price"
+        android:textSize="22sp"
+        android:padding="8dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt_pro_ven_list"
+        android:hint="Description"
+        android:textSize="22sp"
+        android:padding="8dp"
+        android:textColor="@color/black"
+        android:minLines="8"
+        android:maxLines="10" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

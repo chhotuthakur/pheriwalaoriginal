@@ -88,6 +88,7 @@ public class CustAccountActivity extends AppCompatActivity {
 
                 String mail = edtmail.getText().toString();
                 String pass = edtpass.getText().toString();
+                String type = "customer";
 
 
                 login_btn.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +162,7 @@ public class CustAccountActivity extends AppCompatActivity {
                 String mail = edtmail.getText().toString();
                 String phone = edtphone.getText().toString();
                 String add = edtadd.getText().toString();
+                String type = "customer";
 
                 mAuth.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -181,6 +183,7 @@ public class CustAccountActivity extends AppCompatActivity {
                             databaseReference.child("Customer").child(id).child("email").setValue(mail);
                             databaseReference.child("Customer").child(id).child("phone").setValue(phone);
                             databaseReference.child("Customer").child(id).child("address").setValue(add);
+                            databaseReference.child("Customer").child(id).child("type").setValue(type);
 
 
                             regDialog.dismiss();

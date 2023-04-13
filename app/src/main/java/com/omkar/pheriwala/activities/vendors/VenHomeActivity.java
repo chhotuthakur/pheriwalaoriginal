@@ -16,9 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.omkar.pheriwala.R;
 import com.omkar.pheriwala.activities.customer.CustAccountActivity;
-import com.omkar.pheriwala.activities.customer.CustHomeActivity;
-import com.omkar.pheriwala.fragments.CustProfileFragment;
-import com.omkar.pheriwala.fragments.VenProfileFragment;
+import com.omkar.pheriwala.fragments.ven.VenProFragment;
+import com.omkar.pheriwala.fragments.ven.VenProfileFragment;
 
 public class VenHomeActivity extends AppCompatActivity {
 
@@ -61,6 +60,14 @@ public class VenHomeActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.ven_side_pro:
+
+                    fragment = new VenProfileFragment();
+                    break;
+                case R.id.ven_side_proda:
+
+                    fragment = new VenProFragment();
+                    break;
+                case R.id.ven_side_locate:
 
                     fragment = new VenProfileFragment();
                     break;
