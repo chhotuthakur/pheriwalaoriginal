@@ -17,9 +17,7 @@ import com.omkar.pheriwala.R;
 
 public class CustProfileFragment extends Fragment {
 
-    DatabaseReference databaseReference;
-    FirebaseAuth mAuth;
-    FirebaseUser firebaseUser;
+
 
 
     public CustProfileFragment() {
@@ -44,39 +42,6 @@ public class CustProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_cust_profile, container, false);
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (firebaseUser != null){
-            String email = firebaseUser.getEmail();
-
-            TextView mail = (TextView) v.findViewById(R.id.cust_frag_mail);
-
-            mail.setText(email);
-
-//            databaseReference = FirebaseDatabase.getInstance().getReference().child("guardians");
-//            Query query = databaseReference.orderByChild(email).equalTo("guardian@example.com");
-//            query.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    if (dataSnapshot.exists()) {
-//
-//
-//
-//
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//                    throw databaseError.toException(); // don't ignore errors
-//                }
-//            });
-        }
-
-
-
-
 
 
         return v;

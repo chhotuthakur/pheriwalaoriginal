@@ -2,7 +2,7 @@ package com.omkar.pheriwala.models;
 
 public class Customers {
 
-    String id,username,email,phone,address;
+    String id,username,email,phone,address,type;
 
     public Customers() {
     }
@@ -13,6 +13,7 @@ public class Customers {
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.type = type;
     }
 
     public String getId() {
@@ -53,5 +54,13 @@ public class Customers {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
