@@ -6,7 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/pro_hol">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,6 +34,30 @@
             android:padding="8dp"/>
 
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/pro_hol">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pro_edit_btn"
+            android:text="Edit"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pro_delete_btn"
+            android:text="Delete"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -16,8 +17,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.omkar.pheriwala.R;
 import com.omkar.pheriwala.activities.customer.CustAccountActivity;
+import com.omkar.pheriwala.fragments.ven.AddproFragment;
+import com.omkar.pheriwala.fragments.ven.VenPlacesFragment;
 import com.omkar.pheriwala.fragments.ven.VenProFragment;
 import com.omkar.pheriwala.fragments.ven.VenProfileFragment;
+import com.omkar.pheriwala.utils.FragmentChangeListener;
 
 public class VenHomeActivity extends AppCompatActivity {
 
@@ -46,7 +50,7 @@ public class VenHomeActivity extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        VenProfileFragment fragment = new VenProfileFragment();
+        VenPlacesFragment fragment = new VenPlacesFragment() ;
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.ven_home_frag_container, fragment, "");
         fragmentTransaction.commit();
@@ -73,8 +77,11 @@ public class VenHomeActivity extends AppCompatActivity {
                     break;
 
             }
+
             return true;
         }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -85,6 +92,23 @@ public class VenHomeActivity extends AppCompatActivity {
         if (mUser==null){
             Toast.makeText(this,"please log in ",Toast.LENGTH_LONG).show();
             startActivity(new Intent(VenHomeActivity.this, CustAccountActivity.class));
+        }
+    }
+
+    class HomeActivity extends VenHomeActivity implements FragmentChangeListener{
+
+
+
+        @Override
+        public void replaceFragment(Fragment fragment) {
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.ven_home_frag_container,fragment,fragment.toString());
+            transaction.addToBackStack(fragment.toString());
+            transaction.commit();
+
+
         }
     }
 }

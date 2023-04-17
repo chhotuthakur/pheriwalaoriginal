@@ -61,23 +61,27 @@ public class AddproFragment extends Fragment {
         proqty =  v.findViewById(R.id.edt_pro_ven_qty);
         proprice =  v.findViewById(R.id.edt_pro_ven_price);
 
-        name = proname.getText().toString();
-        qty = proqty.getText().toString();
-        price = proprice.getText().toString();
-//        id = name+qty;
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-         id = user.getEmail();
 
 
-        prodb = FirebaseDatabase.getInstance().getReference();
+
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                prodb.child("Products").child(id).setValue(name);
-                prodb.child("Products").child(id).setValue(qty);
-                prodb.child("Products").child(id).setValue(price);
+
+                name = proname.getText().toString();
+                qty = proqty.getText().toString();
+                price = proprice.getText().toString();
+//        id = name+qty;
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+                id = name+qty;
+                prodb = FirebaseDatabase.getInstance().getReference();
+                prodb.child("Products").child(id).child("name").setValue(name);
+                prodb.child("Products").child(id).child("qty").setValue(qty);
+                prodb.child("Products").child(id).child("price").setValue(price);
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
