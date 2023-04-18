@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.omkar.pheriwala.R;
@@ -50,33 +51,22 @@ public class VenHomeActivity extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        VenPlacesFragment fragment = new VenPlacesFragment() ;
+        VenPlacesFragment fragment = new VenPlacesFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.ven_home_frag_container, fragment, "");
         fragmentTransaction.commit();
 
+        // Find our drawer view
+        NavigationView nvDrawer = (NavigationView) findViewById(R.id.ven_nav_view);
+        // Setup drawer view
+        setupDrawerContent(nvDrawer);
+
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        fragment = null;
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-
-            switch (item.getItemId()){
-                case R.id.ven_side_pro:
-
-                    fragment = new VenProfileFragment();
-                    break;
-                case R.id.ven_side_proda:
-
-                    fragment = new VenProFragment();
-                    break;
-                case R.id.ven_side_locate:
-
-                    fragment = new VenProfileFragment();
-                    break;
-
-            }
 
             return true;
         }
@@ -89,26 +79,106 @@ public class VenHomeActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mUser = mAuth.getCurrentUser();
-        if (mUser==null){
-            Toast.makeText(this,"please log in ",Toast.LENGTH_LONG).show();
+        if (mUser == null) {
+            Toast.makeText(this, "please log in ", Toast.LENGTH_LONG).show();
             startActivity(new Intent(VenHomeActivity.this, CustAccountActivity.class));
         }
     }
 
-    class HomeActivity extends VenHomeActivity implements FragmentChangeListener{
 
 
-
-        @Override
-        public void replaceFragment(Fragment fragment) {
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.ven_home_frag_container,fragment,fragment.toString());
-            transaction.addToBackStack(fragment.toString());
-            transaction.commit();
-
-
-        }
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
     }
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        Class fragmentClass;
+        switch(menuItem.getItemId()) {
+            case R.id.ven_side_proda:
+                fragmentClass = VenProFragment.class;
+                break;
+            case R.id.ven_side_pro:
+                fragmentClass = VenProfileFragment.class;
+                break;
+            case R.id.ven_side_locate:
+                fragmentClass = VenPlacesFragment.class;
+                break;
+
+
+            case R.id.ven_side_not:
+                fragmentClass = AddproFragment.class;
+                break;
+
+            default:
+                fragmentClass = VenProFragment.class;
+        }
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Insert the fragment by replacing any existing fragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.ven_home_frag_container, fragment).commit();
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        drawerLayout.closeDrawers();
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    class HomeActivity extends VenHomeActivity implements FragmentChangeListener{
+//
+//
+//
+//        @Override
+//        public void replaceFragment(Fragment fragment) {
+//
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction transaction = fragmentManager.beginTransaction();
+//            transaction.replace(R.id.ven_home_frag_container,fragment,fragment.toString());
+//            transaction.addToBackStack(fragment.toString());
+//            transaction.commit();
+//
+//
+//        }
+//    }

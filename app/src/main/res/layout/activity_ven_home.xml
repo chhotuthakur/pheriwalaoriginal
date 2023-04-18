@@ -6,16 +6,30 @@
     android:layout_height="match_parent"
     android:id="@+id/ven_home_drawer"
     tools:context=".activities.vendors.VenHomeActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/loca_toca"
+        android:text="Current Location"
+        android:drawableStart="@drawable/ic_baseline_location_on_24"
+        android:padding="8dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ven_home_frag_container"/>
-
+        android:id="@+id/ven_home_frag_container"
+        android:layout_below="@id/loca_toca"/>
+    </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/ven_side_menu" />
+        app:menu="@menu/ven_side_menu"
+        android:id="@+id/ven_nav_view"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
