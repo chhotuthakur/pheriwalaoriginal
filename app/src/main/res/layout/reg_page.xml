@@ -10,6 +10,13 @@
 <!--        android:layout_centerHorizontal="true"-->
 <!--        android:layout_above="@id/lay_line2"/>-->
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logo_reg" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +25,8 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_below="@id/logo_reg">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

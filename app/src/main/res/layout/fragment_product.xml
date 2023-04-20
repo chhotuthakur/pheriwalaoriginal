@@ -3,10 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.common.ProductFragment">
+    tools:context=".fragments.common.ProductFragment"
+    android:background="@drawable/bg_curve">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/bg_curve"
+        android:id="@+id/head_fml"/>
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/prod_holder_recy"/>
+    android:id="@+id/prod_holder_recy"
+    android:background="@android:color/transparent"/>
 </FrameLayout>

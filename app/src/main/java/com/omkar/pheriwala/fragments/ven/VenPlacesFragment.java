@@ -116,7 +116,7 @@ public class VenPlacesFragment extends Fragment {
             }
         }
     }
-    private class LocationAddressResultReceiver extends ResultReceiver {
+    public class LocationAddressResultReceiver extends ResultReceiver {
         LocationAddressResultReceiver(Handler handler) {
             super(handler);
         }

@@ -8,7 +8,7 @@
         android:layout_height="150dp"
         android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
-        android:id="@+id/logo_login"/>
+        android:id="@+id/logo_login" />
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
@@ -23,37 +23,39 @@
         android:id="@+id/lay_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logo_login"
         android:layout_centerInParent="true"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:orientation="vertical"
-        android:padding="8dp"
-        android:layout_below="@id/logo_login">
+        android:padding="8dp">
 
         <EditText
+            android:id="@+id/mail_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:hint="Email"
-            android:id="@+id/mail_login"
             android:textSize="19sp" />
 
         <EditText
+            android:id="@+id/pass_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:hint="Password"
-            android:textSize="19sp"
-            android:id="@+id/pass_login"/>
+            android:textSize="19sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:elevation="28dp"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:translationZ="35dp">
 
             <Button
                 android:id="@+id/login_btn"

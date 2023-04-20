@@ -5,6 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".fragments.cust.CustProfileFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:id="@+id/locas_tocas"
+        android:text="Current Location"
+        android:drawableStart="@drawable/ic_baseline_location_on_24"
+        android:padding="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cust_profile_recy"
+        android:padding="7dp"
+        android:layout_below="@id/locas_tocas"/>
+
 
 
 

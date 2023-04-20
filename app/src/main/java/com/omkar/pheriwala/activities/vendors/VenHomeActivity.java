@@ -51,7 +51,7 @@ public class VenHomeActivity extends AppCompatActivity {
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        VenPlacesFragment fragment = new VenPlacesFragment();
+        VenProFragment fragment = new VenProFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.ven_home_frag_container, fragment, "");
         fragmentTransaction.commit();
@@ -81,7 +81,7 @@ public class VenHomeActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         if (mUser == null) {
             Toast.makeText(this, "please log in ", Toast.LENGTH_LONG).show();
-            startActivity(new Intent(VenHomeActivity.this, CustAccountActivity.class));
+            startActivity(new Intent(VenHomeActivity.this, VenAccountActivity.class));
         }
     }
 
